@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Radio Streaming</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  </head>
+  <body>
+    <h1>🎵 Radio Streaming Indonesia</h1>
+
+    <div class="radio-container">
+      <div class="radio-card">
+        <h2>Gen FM</h2>
+        <audio id="genfm" controls></audio>
+      </div>
+
+      <div class="radio-card">
+        <h2>Jak FM</h2>
+        <audio id="jakfm" controls></audio>
+      </div>
+
+      <div class="radio-card">
+        <h2>Prambors FM</h2>
+        <audio
+          id="prambors"
+          controls
+          src="https://s2.cloudmu.id/listen/prambors/radio.aac"
+        ></audio>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
