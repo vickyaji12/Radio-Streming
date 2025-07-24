@@ -24,6 +24,10 @@ setupHLSPlayer(
   "https://wz.mari.co.id:1936/web_jakfm/jakfm/playlist.m3u8",
   "jakfm"
 );
+setupHLSPlayer(
+  "https://wz.mari.co.id:1936/web_kisfm/kisfm/playlist.m3u8",
+  "kisfm"
+);
 
 // ============================
 // BLOKIR DEVTOOLS & INSPECT
