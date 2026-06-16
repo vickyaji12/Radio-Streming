@@ -1,63 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <title>Radio Streaming</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1a0a2e" />
+    <meta
+      name="description"
+      content="Dengarkan radio streaming Indonesia favoritmu — Gen FM, Jak FM, Prambors, RRI Pro 3, dan lainnya."
+    />
+    <title>Radio Streaming Indonesia</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   </head>
   <body>
-    <h1>🎵 Radio Streaming Indonesia</h1>
-
-    <div class="radio-container">
-      <div class="radio-card">
-        <h2>Gen FM</h2>
-        <audio id="genfm" controls></audio>
-      </div>
-
-      <div class="radio-card">
-        <h2>Jak FM</h2>
-        <audio id="jakfm" controls></audio>
-      </div>
-
-      <div class="radio-card">
-        <h2>Prambors FM</h2>
-        <audio
-          id="prambors"
-          controls
-          src="https://s2.cloudmu.id/listen/prambors/radio.aac"
-        ></audio>
-      </div>
-
-      <div class="radio-card">
-        <h2>RRI Pro 3</h2>
-        <audio
-          id="rripro3"
-          controls
-          src="https://stream-node0.rri.co.id/streaming/14/9014/kbrn.mp3"
-        ></audio>
-      </div>
-
-      <div class="radio-card">
-        <h2>Lagu Random</h2>
-        <audio
-          id="randommusic"
-          controls
-          src="https://stream-162.zeno.fm/"
-        ></audio>
-      </div>
+    <div class="bg-blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
     </div>
 
-    <div class="radio-card">
-      <h2>Kiss FM</h2>
-      <audio id="kisfm" controls></audio>
+    <header class="site-header">
+      <div class="header-badge">🎧 LIVE</div>
+      <h1 class="site-title">
+        <span class="title-icon">📻</span>
+        Radio Streaming
+        <span class="title-accent">Indonesia</span>
+      </h1>
+      <p class="site-subtitle">
+        Pilih stasiun favoritmu &amp; nikmati musiknya!
+      </p>
+    </header>
+
+    <main class="radio-grid" id="radioGrid">
+      <article
+        class="radio-card is-maintenance"
+        data-color="#FF6B35"
+        style="--station-color: #ff6b35"
+        data-available="false"
+      >
+        <span class="maintenance-badge">Maintenance</span>
+        <div class="card-header">
+          <span class="station-icon">🎸</span>
+          <div class="station-info">
+            <h2 class="station-name">Gen FM</h2>
+            <span class="station-tag">Pop · Rock</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar Gen FM"
+            data-target="genfm"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume Gen FM"
+            />
+          </div>
+        </div>
+        <audio id="genfm" preload="none"></audio>
+      </article>
+
+      <article
+        class="radio-card"
+        data-color="#4ECDC4"
+        style="--station-color: #4ecdc4"
+        data-available="true"
+      >
+        <div class="card-header">
+          <span class="station-icon">🏙️</span>
+          <div class="station-info">
+            <h2 class="station-name">Jak FM</h2>
+            <span class="station-tag">Jakarta · Hits</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar Jak FM"
+            data-target="jakfm"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume Jak FM"
+            />
+          </div>
+        </div>
+        <audio id="jakfm" preload="none"></audio>
+      </article>
+
+      <article
+        class="radio-card is-maintenance"
+        data-color="#FFE66D"
+        style="--station-color: #ffe66d"
+        data-available="false"
+      >
+        <span class="maintenance-badge">Maintenance</span>
+        <div class="card-header">
+          <span class="station-icon">⭐</span>
+          <div class="station-info">
+            <h2 class="station-name">Prambors FM</h2>
+            <span class="station-tag">Top 40 · Hits</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar Prambors FM"
+            data-target="prambors"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume Prambors FM"
+            />
+          </div>
+        </div>
+        <audio
+          id="prambors"
+          preload="none"
+          src="https://s2.cloudmu.id/listen/prambors/radio.aac"
+        ></audio>
+      </article>
+
+      <article
+        class="radio-card"
+        data-color="#FF4757"
+        style="--station-color: #ff4757"
+        data-available="true"
+      >
+        <div class="card-header">
+          <span class="station-icon">📡</span>
+          <div class="station-info">
+            <h2 class="station-name">RRI Pro 3</h2>
+            <span class="station-tag">Nasional · Info</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar RRI Pro 3"
+            data-target="rripro3"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume RRI Pro 3"
+            />
+          </div>
+        </div>
+        <audio
+          id="rripro3"
+          preload="none"
+          src="https://stream-node0.rri.co.id/streaming/14/9014/kbrn.mp3"
+        ></audio>
+      </article>
+
+      <article
+        class="radio-card is-maintenance"
+        data-color="#A29BFE"
+        style="--station-color: #a29bfe"
+        data-available="false"
+      >
+        <span class="maintenance-badge">Maintenance</span>
+        <div class="card-header">
+          <span class="station-icon">🎲</span>
+          <div class="station-info">
+            <h2 class="station-name">Lagu Random</h2>
+            <span class="station-tag">Random · Mix</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar Lagu Random"
+            data-target="randommusic"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume Lagu Random"
+            />
+          </div>
+        </div>
+        <audio
+          id="randommusic"
+          preload="none"
+          src="https://stream-162.zeno.fm/"
+        ></audio>
+      </article>
+
+      <article
+        class="radio-card is-maintenance"
+        data-color="#FF69B4"
+        style="--station-color: #ff69b4"
+        data-available="false"
+      >
+        <span class="maintenance-badge">Maintenance</span>
+        <div class="card-header">
+          <span class="station-icon">💋</span>
+          <div class="station-info">
+            <h2 class="station-name">Kiss FM</h2>
+            <span class="station-tag">Love · Slow</span>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+        <div class="player-controls">
+          <button
+            class="btn-play"
+            aria-label="Putar Kiss FM"
+            data-target="kisfm"
+          >
+            <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          </button>
+          <div class="wave-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="volume-wrap">
+            <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+            <input
+              type="range"
+              class="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.8"
+              aria-label="Volume Kiss FM"
+            />
+          </div>
+        </div>
+        <audio id="kisfm" preload="none"></audio>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>🄯 Copyright 2025 dev by vicky</p>
+      <p>v1.2</p>
+    </footer>
+
+    <div class="now-playing-bar" id="nowPlayingBar" hidden>
+      <span class="np-icon" id="npIcon">🎵</span>
+      <div class="np-info">
+        <span class="np-label">Sedang diputar</span>
+        <span class="np-station" id="npStation">—</span>
+      </div>
+      <div class="np-wave" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <button class="np-stop" id="npStop" aria-label="Stop pemutaran">⏹</button>
+    </div>
+
+    <div
+      class="modal-overlay"
+      id="noticeModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="noticeTitle"
+      hidden
+    >
+      <div class="modal-dialog">
+        <div class="modal-icon" aria-hidden="true">📢</div>
+        <span class="modal-label">Pemberitahuan Layanan</span>
+        <h2 class="modal-title" id="noticeTitle">
+          Informasi Ketersediaan Siaran
+        </h2>
+        <p class="modal-text">
+          Saat ini, layanan siaran langsung hanya dapat diakses melalui
+          <strong>Jak FM</strong> dan <strong>RRI Pro 3</strong>.
+        </p>
+        <p class="modal-text">
+          Stasiun radio lainnya sedang dalam proses pemeliharaan dan peningkatan
+          sistem oleh tim developer kami guna memberikan pengalaman mendengarkan
+          yang lebih baik.
+        </p>
+        <p class="modal-text modal-text-muted">
+          Kami mohon maaf atas ketidaknyamanan ini. Terima kasih atas pengertian
+          dan kesabaran Anda.
+        </p>
+        <div class="modal-stations">
+          <span class="modal-station available">🏙️ Jak FM</span>
+          <span class="modal-station available">📡 RRI Pro 3</span>
+        </div>
+        <button class="modal-btn" id="noticeClose">Baik, Saya Mengerti</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
   </body>
 </html>
-<!-- src="https://stream.denger.in/" -->
